@@ -15,12 +15,12 @@ const ProjectItem = ({ image, index, height }: Props) => {
       }`}
     >
       <img
-        className={`w-screen object-cover object-center `}
+        className="height-full w-screen object-cover object-center"
         src={image}
         alt="Image 1"
         style={{
           zIndex: index,
-          height: height + "px",
+          minHeight: height + "px",
         }}
       />
       <div className="absolute inset-0 bg-slate-800/30 grid place-items-center">
