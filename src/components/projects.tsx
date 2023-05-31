@@ -33,6 +33,7 @@ const Projects = () => {
         refreshPriority: 1,
         scrub: 0,
       });
+      ScrollTrigger.config({ ignoreMobileResize: true });
     });
     return () => ctx.revert();
   }, []);
