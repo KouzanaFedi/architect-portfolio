@@ -1,5 +1,3 @@
-"use client";
-import { useEffect } from "react";
 import "@/style/globals.css";
 
 export const metadata = {
@@ -13,22 +11,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  function setVH() {
-    const vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty("--vh", `${vh}px`);
-  }
-  useEffect(() => {
-    setVH();
-    window.addEventListener("resize", () => {
-      setVH();
-    });
 
-    () => {
-      window.removeEventListener("resize", () => {
-        setVH();
-      });
-    };
-  }, []);
 
   return (
     <html lang="en">

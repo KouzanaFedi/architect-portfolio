@@ -13,6 +13,23 @@ const Projects = () => {
   const ref = useRef<HTMLDivElement>(null);
   const NB = 4;
 
+  function setVH() {
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty("--vh", `${vh}px`);
+  }
+  useEffect(() => {
+    setVH();
+    window.addEventListener("resize", () => {
+      setVH();
+    });
+
+    () => {
+      window.removeEventListener("resize", () => {
+        setVH();
+      });
+    };
+  }, []);
+  
   useEffect(() => {
     let ctx = gsap.context(() => {
       const tl = gsap.timeline();
@@ -45,11 +62,7 @@ const Projects = () => {
       >
         {["projectA.jpg", "projectB.jpg", "projectA.jpg", "projectB.jpg"].map(
           (image, index) => (
-            <ProjectItem
-              key={index}
-              index={index}
-              image={image}
-            />
+            <ProjectItem key={index} index={index} image={image} />
           )
         )}
       </div>
