@@ -4,10 +4,9 @@ import { HiOutlineArrowDownRight } from "react-icons/hi2";
 type Props = {
   image: string;
   index: number;
-  height: number;
 };
 
-const ProjectItem = ({ image, index, height }: Props) => {
+const ProjectItem = ({ image, index }: Props) => {
   return (
     <div
       className={`scrollable-item absolute ${
@@ -20,7 +19,6 @@ const ProjectItem = ({ image, index, height }: Props) => {
         alt="Image 1"
         style={{
           zIndex: index,
-          minHeight: height + "px",
         }}
       />
       <div className="absolute inset-0 bg-slate-800/30 grid place-items-center">

@@ -10,7 +10,6 @@ import Link from "next/link";
 gsap.registerPlugin(ScrollTrigger);
 
 const Projects = () => {
-  const [innerHeight, setInnerHeight] = useState(0);
   const ref = useRef<HTMLDivElement>(null);
   const NB = 4;
 
@@ -37,25 +36,16 @@ const Projects = () => {
     return () => ctx.revert();
   }, []);
 
-  useEffect(() => {
-    console.log(innerHeight);
-  }, [innerHeight]);
-
-  useEffect(() => {
-    setInnerHeight(window.innerHeight);
-  }, []);
-
   return (
     <>
       <div
         ref={ref}
         // style={{ height: innerHeight + "px" }}
-        className="h-screen relative"
+        className="height-full relative"
       >
         {["projectA.jpg", "projectB.jpg", "projectA.jpg", "projectB.jpg"].map(
           (image, index) => (
             <ProjectItem
-              height={innerHeight}
               key={index}
               index={index}
               image={image}
