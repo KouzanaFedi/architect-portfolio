@@ -15,7 +15,6 @@ const Projects = () => {
   const NB = 4;
 
   useEffect(() => {
-    setInnerHeight(window.innerHeight);
     let ctx = gsap.context(() => {
       const tl = gsap.timeline();
       tl.to(".scrollable-item", {
@@ -44,14 +43,6 @@ const Projects = () => {
 
   useEffect(() => {
     setInnerHeight(window.innerHeight);
-    window.addEventListener("resize", () => {
-      setInnerHeight(window.innerHeight);
-    });
-
-    return () =>
-      window.removeEventListener("resize", () => {
-        setInnerHeight(window.innerHeight);
-      });
   }, []);
 
   return (
