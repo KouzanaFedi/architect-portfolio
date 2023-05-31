@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import ProjectItem from "./projectItem";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
@@ -10,10 +10,12 @@ import Link from "next/link";
 gsap.registerPlugin(ScrollTrigger);
 
 const Projects = () => {
+  const [innerHeight, setInnerHeight] = useState(0);
   const ref = useRef<HTMLDivElement>(null);
   const NB = 4;
 
   useEffect(() => {
+    setInnerHeight(window.innerHeight);
     let ctx = gsap.context(() => {
       const tl = gsap.timeline();
       tl.to(".scrollable-item", {
@@ -25,21 +27,47 @@ const Projects = () => {
         animation: tl,
         trigger: ref.current,
         start: "top top",
-        end: "+=" + (window.innerHeight * (NB - 1)) / 2,
+        end: () => "+=" + (window.innerHeight * (NB - 1)) / 2,
         invalidateOnRefresh: true,
         pin: true,
+        refreshPriority: 1,
         scrub: 0,
       });
     });
     return () => ctx.revert();
   }, []);
 
+  useEffect(() => {
+    console.log(innerHeight);
+  }, [innerHeight]);
+
+  useEffect(() => {
+    setInnerHeight(window.innerHeight);
+    window.addEventListener("resize", () => {
+      setInnerHeight(window.innerHeight);
+    });
+
+    return () =>
+      window.removeEventListener("resize", () => {
+        setInnerHeight(window.innerHeight);
+      });
+  }, []);
+
   return (
     <>
-      <div ref={ref} className="h-screen relative">
+      <div
+        ref={ref}
+        // style={{ height: innerHeight + "px" }}
+        className="h-screen relative"
+      >
         {["projectA.jpg", "projectB.jpg", "projectA.jpg", "projectB.jpg"].map(
           (image, index) => (
-            <ProjectItem key={index} index={index} image={image} />
+            <ProjectItem
+              height={innerHeight}
+              key={index}
+              index={index}
+              image={image}
+            />
           )
         )}
       </div>

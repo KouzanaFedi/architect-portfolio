@@ -1,3 +1,5 @@
+"use client";
+import { useState } from "react";
 import LOGO from "~/logo.svg";
 import PRESS from "~/press.svg";
 import ProjectB from "~/projectB.jpg";
@@ -9,17 +11,25 @@ import {
   HiPlay,
 } from "react-icons/hi2";
 import Link from "next/link";
+import VideoOverlay from "@/components/videoOverlay";
+import NavItem from "@/components/layout/HeaderItem";
 
 const Project = () => {
+  const [openOverlay, setOpenOverlay] = useState(false);
+
   return (
-    <section className="w-screen flex">
+    <section className="w-screen flex relative">
       <div className="w-1/3 h-screen max-h-screen relative">
         <div className="p-4 h-[calc(100vh-7rem)] overflow-y-auto">
           <div className="flex justify-between items-center mb-12 mt-4">
-            <Image src={LOGO} alt="Mourad Rziga" />
-            <nav className="flex flex-col items-end text-black uppercase font-semibold">
-              <Link href={"/"}> Home</Link>
-              <Link href={"/projects"}>Projects</Link>
+            <Link href={"/"}>
+              <Image src={LOGO} alt="Mourad Rziga" />
+            </Link>
+            <nav>
+              <ul>
+                <NavItem href="/" title="Home" />
+                <NavItem href="/projects" title="Projects" />
+              </ul>
             </nav>
           </div>
           <div className="pl-8">
@@ -54,7 +64,12 @@ const Project = () => {
                   <span className="text-xl font-light">Ghadi</span>
                 </div>
               </div>
-              <button className="relative">
+              <button
+                className="relative"
+                onClick={() => {
+                  setOpenOverlay(true);
+                }}
+              >
                 <Image className="animate-spin-slow" src={PRESS} alt="press" />
                 <HiPlay className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-arch-orange text-4xl" />
               </button>
@@ -85,6 +100,12 @@ const Project = () => {
           <Image key={item} src={ProjectB} alt="pic" />
         ))}
       </div>
+      <VideoOverlay
+        openOverlay={openOverlay}
+        closeOverlay={() => {
+          setOpenOverlay(false);
+        }}
+      />
     </section>
   );
 };

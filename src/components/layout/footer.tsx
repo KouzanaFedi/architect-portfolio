@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import LOGO from "~/logo-white.svg";
 import LOGO_FK from "~/logo-fk.svg";
+import * as SETTINGS from "@/utils/settings";
 
 const Footer = () => {
   return (
@@ -14,10 +15,12 @@ const Footer = () => {
               Quick Links
             </div>
             <ul className="text-xl flex flex-col gap-2 text-gray-300">
-              <li>Home</li>
-              <li>Home</li>
-              <li>Home</li>
-              <li>Home</li>
+              <Link href={"/"}>
+                <li>Home</li>
+              </Link>
+              <Link href={"/projects"}>
+                <li>Projects</li>
+              </Link>
             </ul>
           </div>
           <div className="mx-auto">
@@ -25,9 +28,18 @@ const Footer = () => {
               Socials
             </div>
             <ul className="text-xl flex flex-col gap-2 text-gray-300">
-              <li>Instagram</li>
-              <li>LinkedIn</li>
-              <li>E-mail</li>
+              <Link target="_blank" href={SETTINGS.LINKEDIN}>
+                <li>LinkedIn</li>
+              </Link>
+              <Link target="_blank" href={SETTINGS.INSTAGRAM}>
+                <li>Instagram</li>
+              </Link>
+              <Link target="_blank" href={SETTINGS.EMAIL}>
+                <li>E-mail</li>
+              </Link>
+              <Link target="_blank" href={SETTINGS.WHATSAPP}>
+                <li>WhatsApp</li>
+              </Link>
             </ul>
           </div>
         </div>

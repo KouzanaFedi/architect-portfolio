@@ -9,7 +9,7 @@ const ProjectCard = ({}: Props) => {
     <Link href={"#"} className="group border-b border-arch-black pb-12">
       <div className="relative isolate after:absolute after:content-[''] after:block after:inset-0 after:bg-slate-800/30">
         <Image className="aspect-video" src={PROJECT_B} alt="projectA" />
-        <div className="absolute z-10 top-5 right-5 border-2 isolate text-white transition-color duration-500 ease-in-out overflow-hidden border-white p-2 rounded-full text-2xl before:content-[''] before:absolute before:top-1/2 before:left-1/2 before:w-[150%] before:-translate-x-1/2 before:-translate-y-[150%] before:aspect-square before:bg-white before:transition-transform before:-z-10 before:duration-500 before:ease-in-out group-hover:before:-translate-y-1/2 group-hover:text-arch-black">
+        <div className="absolute z-10 top-5 right-5 border-2 text-white border-white p-2 rounded-full text-2xl">
           <HiOutlineArrowUpRight />
         </div>
       </div>

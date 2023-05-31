@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import LOGO from "~/logo.svg";
+import NavItem from "./HeaderItem";
+
 export default function Header() {
   return (
     <header className="w-full absolute top-0">
@@ -12,11 +14,11 @@ export default function Header() {
             alt="Mourad Rziga"
           />
         </Link>
-        <nav className="flex gap-4">
-          <Link href={"/"}>Home</Link>
-          <Link href={"/"}>Home</Link>
-          <Link href={"/"}>Home</Link>
-          <Link href={"/"}>Home</Link>
+        <nav>
+          <ul>
+            <NavItem href="/" title="Home" />
+            <NavItem href="/projects" title="Projects" />
+          </ul>
         </nav>
       </div>
     </header>
