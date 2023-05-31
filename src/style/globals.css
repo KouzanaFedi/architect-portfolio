@@ -10,6 +10,11 @@ body {
   @apply bg-arch-gray;
 }
 
+body {
+  position: fixed;
+  height: 100%;
+}
+
 .element-mask {
   -webkit-clip-path: inset(50% 0 50% 0);
   clip-path: inset(50% 0 50% 0);
@@ -34,5 +39,5 @@ body {
 
 .height-full {
   min-height: -webkit-fill-available;
-  min-height: 100svh;
+  min-height: 100vh;
 }
