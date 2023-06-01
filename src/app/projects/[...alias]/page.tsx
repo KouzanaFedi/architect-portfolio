@@ -19,8 +19,8 @@ const Project = () => {
 
   return (
     <section className="w-screen flex flex-col relative lg:flex-row">
-      <div className="w-full h-screen max-h-screen relative lg:w-1/3">
-        <div className="p-4 h-[calc(100vh-7rem)] overflow-y-auto">
+      <div className="w-full h-auto relative lg:w-1/3 lg:max-h-screen lg:h-screen">
+        <div className="p-4 overflow-y-auto lg:h-[calc(100vh-7rem)]">
           <div className="flex justify-between items-center mb-12 mt-4">
             <Link href={"/"}>
               <Image src={LOGO} alt="Mourad Rziga" />
@@ -65,7 +65,7 @@ const Project = () => {
                 </div>
               </div>
               <button
-                className="relative"
+                className="fixed right-8 top-[150px] z-10 lg:relative lg:top-0"
                 onClick={() => {
                   setOpenOverlay(true);
                 }}
@@ -76,8 +76,8 @@ const Project = () => {
             </div>
           </div>
         </div>
-        <div className="absolute bottom-0 h-28 inset-x-0 flex">
-          <button className="group w-1/2 h-full flex justify-center items-center transition-colors duration-500 hover:bg-arch-black">
+        <div className="h-28 mt-8 inset-x-0 flex lg:absolute lg:mt-0 lg:bottom-0">
+          <button className="group w-1/2 bg-arch-gray h-full flex justify-center items-center transition-colors duration-500 hover:bg-arch-black">
             <div className="flex items-center gap-2 transition-colors duration-500 group-hover:text-white">
               <div className="p-2 text-2xl">
                 <HiOutlineArrowLeft />

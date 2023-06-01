@@ -32,7 +32,7 @@ const VideoOverlay = ({ closeOverlay, openOverlay }: Props) => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
-          className="fixed inset-0 bg-slate-500/70"
+          className="fixed z-20 inset-0 bg-slate-500/70"
         >
           <motion.div
             initial={{ opacity: 0, x: 100 }}
