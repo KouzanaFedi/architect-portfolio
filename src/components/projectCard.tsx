@@ -6,7 +6,7 @@ type Props = {};
 
 const ProjectCard = ({}: Props) => {
   return (
-    <Link href={"#"} className="group border-b border-arch-black pb-12">
+    <Link href={"/projects/1"} className="group border-b border-arch-black pb-12">
       <div className="relative isolate after:absolute after:content-[''] after:block after:inset-0 after:bg-slate-800/30">
         <Image className="aspect-video" src={PROJECT_B} alt="projectA" />
         <div className="absolute z-10 top-5 right-5 border-2 text-white border-white p-2 rounded-full text-2xl">
@@ -29,8 +29,8 @@ const ProjectCard = ({}: Props) => {
             obcaecati illum, optio ipsum ipsa facilis. A voluptate repudiandae
             doloribus culpa vero possimus et.
           </p>
-          <div className="flex items-center justify-between text-gray-400">
-            <div className="flex items-center gap-8">
+          <div className="flex items-start justify-between text-gray-400 md:items-center">
+            <div className="flex flex-col items-start gap-4 md:gap-8 md:flex-row md:items-center">
               <div>2023</div>
               <div>Hammem Sousse</div>
             </div>

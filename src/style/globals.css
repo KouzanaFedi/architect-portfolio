@@ -12,6 +12,7 @@ body {
   @apply font-arch-regular;
   @apply text-arch-black;
   @apply bg-arch-gray;
+  overflow-x: hidden;
 }
 
 body {

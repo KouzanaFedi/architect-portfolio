@@ -7,7 +7,11 @@ export default function Header() {
   return (
     <header className="w-full absolute top-0">
       <div className="container mx-auto flex justify-between items-center py-4 px-2">
-        <Link href={"/"} aria-label="Mourad Rziga">
+        <Link
+          className="max-w-[200px] md:max-w-none"
+          href={"/"}
+          aria-label="Mourad Rziga"
+        >
           <Image
             className="fill-current text-red-700"
             src={LOGO}

@@ -18,8 +18,8 @@ const Project = () => {
   const [openOverlay, setOpenOverlay] = useState(false);
 
   return (
-    <section className="w-screen flex relative">
-      <div className="w-1/3 h-screen max-h-screen relative">
+    <section className="w-screen flex flex-col relative lg:flex-row">
+      <div className="w-full h-screen max-h-screen relative lg:w-1/3">
         <div className="p-4 h-[calc(100vh-7rem)] overflow-y-auto">
           <div className="flex justify-between items-center mb-12 mt-4">
             <Link href={"/"}>
@@ -32,8 +32,8 @@ const Project = () => {
               </ul>
             </nav>
           </div>
-          <div className="pl-8">
-            <h1 className="text-5xl font-light leading-tight mb-4 pl-12 relative after:absolute after:content-[''] after:h-1 after:w-12 after:bg-arch-orange after:left-12 after:-bottom-4">
+          <div className="pl-4 md:pl-8">
+            <h1 className="text-5xl font-light leading-tight ml-8 mb-4 relative after:absolute after:content-[''] after:h-1 after:w-12 after:bg-arch-orange after:left-6 after:-bottom-4 md:text-5xl md:pl-12 after:md:left-12">
               Project A - Architect masterpiece
               <span className="inline-block p-1 text-lg text-arch-orange -mb-4">
                 <GiPolarStar />

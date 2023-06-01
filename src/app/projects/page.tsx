@@ -12,7 +12,7 @@ export default function Projects() {
             <h1 className="tracking-tighter text-5xl font-semibold uppercase">
               Projects
             </h1>
-            <div className="grid grid-cols-2 gap-12 my-12">
+            <div className="grid grid-cols-1 gap-12 my-12 lg:grid-cols-2">
               {[1, 2, 3, 4, 5].map((item) => (
                 <ProjectCard key={item} />
               ))}
