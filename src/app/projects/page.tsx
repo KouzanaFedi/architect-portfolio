@@ -1,8 +1,15 @@
+import { getAllProjects } from "@/cms";
 import Footer from "@/components/layout/footer";
 import Header from "@/components/layout/header";
 import ProjectCard from "@/components/projectCard";
 
-export default function Projects() {
+async function getData() {
+  const response = await getAllProjects();
+  return response;
+}
+
+export default async function Projects() {
+  const data = await getData();
   return (
     <div className="pt-28">
       <Header />
@@ -13,8 +20,8 @@ export default function Projects() {
               Projects
             </h1>
             <div className="grid grid-cols-1 gap-12 my-12 lg:grid-cols-2">
-              {[1, 2, 3, 4, 5].map((item) => (
-                <ProjectCard key={item} />
+              {data.map((project) => (
+                <ProjectCard key={project.id} project={project} />
               ))}
             </div>
           </div>

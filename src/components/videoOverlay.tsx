@@ -6,11 +6,12 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useRef, useEffect } from "react";
 
 type Props = {
+  id: string;
   closeOverlay: () => void;
   openOverlay: boolean;
 };
 
-const VideoOverlay = ({ closeOverlay, openOverlay }: Props) => {
+const VideoOverlay = ({ closeOverlay, openOverlay, id }: Props) => {
   const iframeRef = useRef<HTMLIFrameElement>(null);
   useOnClickOutside(iframeRef, closeOverlay);
 
@@ -44,7 +45,7 @@ const VideoOverlay = ({ closeOverlay, openOverlay }: Props) => {
             <iframe
               ref={iframeRef}
               className="w-full aspect-video"
-              src="https://www.youtube-nocookie.com/embed/_Rks2oCRS88?autoplay=1"
+              src={`https://www.youtube-nocookie.com/embed/${id}?autoplay=1`}
               title="YouTube video player"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen

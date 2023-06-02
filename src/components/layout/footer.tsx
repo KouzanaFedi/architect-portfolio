@@ -10,7 +10,7 @@ const Footer = () => {
   return (
     <div>
       <section className="w-screen my-12">
-        <div className="container px-2 mx-auto flex flex-col gap-4 lg:flex-row">
+        <div className="container px-2 mx-auto flex pb-4 flex-col gap-4 lg:flex-row">
           <div className="w-full font-arch-fancy leading-normal text-center text-5xl lg:w-2/3 lg:text-start md:text-7xl">
             Designing <br /> the Future{" "}
             <span className="inline-block border-2 border-arch-black rounded-full p-1 text-3xl -mb-2 md:border-4 md:text-5xl md:-mb-3">
@@ -18,7 +18,7 @@ const Footer = () => {
             </span>{" "}
             Today
           </div>
-          <div className="w-full flex items-end pb-4 justify-center mt-8 lg:mt-0 lg:w-1/3 lg:justify-end">
+          <div className="w-full flex items-end justify-center mt-8 lg:mt-0 lg:w-1/3 lg:justify-end">
             <Link
               target="_blank"
               href={SETTINGS.EMAIL}
@@ -73,7 +73,7 @@ const Footer = () => {
               </ul>
             </div>
           </div>
-          <div className="mt-8 text-center">
+          <div className="mt-8 text-center lg:text-start">
             {`${new Date().getFullYear()} © All rights reserved `}
             <span>
               | Made by{" "}

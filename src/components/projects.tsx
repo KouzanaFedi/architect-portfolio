@@ -1,15 +1,20 @@
 "use client";
 
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect } from "react";
 import ProjectItem from "./projectItem";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { HiListBullet } from "react-icons/hi2";
 import Link from "next/link";
+import { FeaturedProject } from "@/cms/types";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Projects = () => {
+type Props = {
+  projects: FeaturedProject[];
+};
+
+const Projects = ({ projects }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
   const NB = 4;
 
@@ -29,7 +34,7 @@ const Projects = () => {
       });
     };
   }, []);
-  
+
   useEffect(() => {
     let ctx = gsap.context(() => {
       const tl = gsap.timeline();
@@ -55,16 +60,10 @@ const Projects = () => {
 
   return (
     <>
-      <div
-        ref={ref}
-        // style={{ height: innerHeight + "px" }}
-        className="height-full relative"
-      >
-        {["projectA.jpg", "projectB.jpg", "projectA.jpg", "projectB.jpg"].map(
-          (image, index) => (
-            <ProjectItem key={index} index={index} image={image} />
-          )
-        )}
+      <div ref={ref} className="height-full relative">
+        {projects.map((project, index) => (
+          <ProjectItem key={project.id} index={index} project={project} />
+        ))}
       </div>
       <div className="w-screen h-32 bg-arch-orange relative element-main">
         <div className="container mx-auto h-full grid place-items-center text-4xl font-light text-white">

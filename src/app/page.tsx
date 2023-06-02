@@ -3,11 +3,18 @@ import Projects from "@/components/projects";
 import Image from "next/image";
 import Link from "next/link";
 import { HiOutlineArrowDownRight } from "react-icons/hi2";
-import BG_PIC from "~/picture1.jpg";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
+import { getHome } from "@/cms";
 
-export default function Home() {
+async function getData() {
+  const response = await getHome();
+  return response;
+}
+
+export default async function Home() {
+  const data = await getData();
+  
   return (
     <div className="pt-28">
       <Header />
@@ -41,17 +48,16 @@ export default function Home() {
           <div className="h-full w-full relative">
             <Image
               className="object-cover w-full h-full"
-              src={BG_PIC}
+              src={data.image.url}
+              height={data.image.height}
+              width={data.image.width}
               alt="pic"
             />
             <div className="absolute inset-0 bg-slate-800/30 p-12 flex items-end">
               <blockquote className="max-w-xl text-2xl text-white font-light">
-                <q>
-                  Good buildings come from good people, and all problems are
-                  solved by good design.
-                </q>
+                <q>{data.quote}</q>
                 <figcaption className="text-xl mt-4 text-end">
-                  —Stephen Gardiner
+                  —{data.quoteAuthor}
                 </figcaption>
               </blockquote>
             </div>
@@ -59,47 +65,27 @@ export default function Home() {
         </section>
         <section className="w-screen">
           <div className="container px-2 mx-auto">
-            <div className="flex flex-col gap-4 pt-8 mb-16 border-t-2 border-arch-black md:flex-row">
-              <div className="w-full md:w-1/3">(Description)</div>
-              <div className="w-full md:w-2/3">
-                <p className="text-2xl">
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Officia nemo ut doloremque, quibusdam adipisci illo distinctio
-                  porro voluptatum dolores debitis molestiae possimus. Modi
-                  itaque consequatur sed aperiam nostrum suscipit voluptatem.
-                </p>
+            {data.information.map(({ id, description, title }) => (
+              <div
+                key={id}
+                className="flex flex-col gap-4 pt-8 mb-16 border-t-2 border-arch-black md:flex-row"
+              >
+                <div className="w-full md:w-1/3">({title})</div>
+                <div className="w-full md:w-2/3">
+                  <p className="text-2xl">{description}</p>
+                </div>
               </div>
-            </div>
-            <div className="flex flex-col gap-4 pt-8 mb-16 border-t-2 border-arch-black md:flex-row">
-              <div className="w-full md:w-1/3">(Description)</div>
-              <div className="w-full md:w-2/3">
-                <p className="text-2xl">
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Officia nemo ut doloremque, quibusdam adipisci illo distinctio
-                  porro voluptatum dolores debitis molestiae possimus. Modi
-                  itaque consequatur sed aperiam nostrum suscipit voluptatem.
-                </p>
-              </div>
-            </div>
+            ))}
           </div>
         </section>
         <section className="w-screen mt-16 pt-16 pb-8 bg-arch-orange">
           <h2 className="container mx-auto pb-2 px-2">(What we do)</h2>
-          <FieldItem
-            title="3D"
-            description="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia at soluta suscipit mollitia dolorum a veniam consequatur, nesciunt dolor."
-          />
-          <FieldItem
-            title="Interior"
-            description="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia at soluta suscipit mollitia dolorum a veniam consequatur, nesciunt dolor. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia at soluta suscipit mollitia dolorum a veniam consequatur, nesciunt dolor."
-          />
-          <FieldItem
-            title="Exterior"
-            description="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia at soluta suscipit mollitia dolorum a veniam consequatur, nesciunt dolor."
-          />
+          {data.service.map(({ id, description, title }) => (
+            <FieldItem key={id} title={title} description={description} />
+          ))}
         </section>
         <section id="projects">
-          <Projects />
+          <Projects projects={data.featuredProject} />
         </section>
       </main>
       <Footer />
