@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { getAllProjectsAlias, getProjectDetail } from "@/cms";
 import ProjectPage from "@/components/projectPage";
+import AnimatedLayout from "@/components/layout/AnimatedLayout";
 
 export const dynamicParams = true;
 
@@ -41,10 +42,12 @@ export default async function Project({
   const { nextProject, prevProject, projectData } = await getData(params);
 
   return (
-    <ProjectPage
-      data={projectData}
-      nextProject={nextProject}
-      prevProject={prevProject}
-    />
+    <AnimatedLayout>
+      <ProjectPage
+        data={projectData}
+        nextProject={nextProject}
+        prevProject={prevProject}
+      />
+    </AnimatedLayout>
   );
 }

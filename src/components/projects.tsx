@@ -16,7 +16,6 @@ type Props = {
 
 const Projects = ({ projects }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
-  const NB = 4;
 
   function setVH() {
     const vh = window.innerHeight * 0.01;
@@ -37,6 +36,8 @@ const Projects = ({ projects }: Props) => {
 
   useEffect(() => {
     let ctx = gsap.context(() => {
+      const vh = document.documentElement.style.getPropertyValue("--vh");
+      const windowHeight = parseFloat(vh.split("px")[0]) * 100;
       const tl = gsap.timeline();
       tl.to(".scrollable-item", {
         top: 0,
@@ -47,7 +48,7 @@ const Projects = ({ projects }: Props) => {
         animation: tl,
         trigger: ref.current,
         start: "top top",
-        end: () => "+=" + (window.innerHeight * (NB - 1)) / 2,
+        end: () => "+=" + (windowHeight * (projects.length - 1)) / 2,
         invalidateOnRefresh: true,
         pin: true,
         refreshPriority: 1,

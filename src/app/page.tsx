@@ -6,6 +6,7 @@ import { HiOutlineArrowDownRight } from "react-icons/hi2";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import { getHome } from "@/cms";
+import AnimatedLayout from "@/components/layout/AnimatedLayout";
 
 async function getData() {
   const response = await getHome();
@@ -14,7 +15,7 @@ async function getData() {
 
 export default async function Home() {
   const data = await getData();
-  
+
   return (
     <div className="pt-28">
       <Header />
@@ -22,7 +23,8 @@ export default async function Home() {
         <section className="w-screen">
           <div className="container mx-auto pt-24 px-2 text-4xl lg:text-8xl md:text-6xl">
             <h1 className="-tracking-wider">
-              Innovative Architecture<span className="font-arch-fancy">,</span>
+              Innovative Architecture
+              <span className="font-arch-fancy">,</span>
             </h1>
             <div className="flex justify-between md:mt-12 flex-col-reverse md:flex-row">
               <div className="w-full flex items-end justify-center mt-8 md:justify-start md:mt-0 md:w-1/2">
@@ -84,7 +86,7 @@ export default async function Home() {
             <FieldItem key={id} title={title} description={description} />
           ))}
         </section>
-        <section id="projects">
+        <section id="projects" className="relative">
           <Projects projects={data.featuredProject} />
         </section>
       </main>
